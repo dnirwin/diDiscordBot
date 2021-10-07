@@ -11,4 +11,4 @@ async def on_ready():
 async def greet(ctx):
     await ctx.send('Hello, how are you?')
 
-client.run('ODk0OTkxNDIyMTE2MjI1MDQ0.YVyDtw.UU1ZBviDhaQbfPPytEZZUwkXCrE')
+client.run('Insert Token Here')
