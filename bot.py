@@ -4,9 +4,9 @@ from discord.ext import commands
 
 client = commands.Bot(command_prefix = '.')
 
-# @client.event
-# async def on_ready():
-#     print('Bot Active.')
+# @client.command()
+# async def on_ready(self):
+#     print('Bot is online.')
 
 @client.command()
 async def greet(ctx):
