@@ -4,13 +4,14 @@ from discord.ext import commands
 
 client = commands.Bot(command_prefix = '.')
 
-# @client.command()
-# async def on_ready(self):
-#     print('Bot is online.')
+@client.event
+async def on_ready():
+    print('Bot is online.')
 
-@client.command()
-async def greet(ctx):
-    await ctx.send('Hello, how are you?')
+@client.event
+async def on_command_error(ctx, error):
+    if isinstance(error, commands.CommandNotFound):
+        await ctx.send('Invalid command, try \'.help\' for a list of commands')
 
 @client.command()
 async def load(ctx, extension):
@@ -29,4 +30,4 @@ for filename in os.listdir('./cogs'):
     if filename.endswith('.py'):
         client.load_extension(f'cogs.{filename[:-3]}')
 
-client.run('Enter Token Here')
+client.run('ODk0OTkxNDIyMTE2MjI1MDQ0.YVyDtw.TwoGmqya0K2UJf-hv7B1pI1GhCk')
