@@ -8,7 +8,7 @@ class Example(commands.Cog):
 
     @commands.command()
     async def greet(self, ctx):
-        await ctx.send('Hello, how are you?')
+        await ctx.send(f'Hello {ctx.author}, how are you?')
 
     @commands.command()
     async def ping(self, ctx):
