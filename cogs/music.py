@@ -1,7 +1,7 @@
 import discord
 from discord.ext import commands
 
-class MusicCommands(commands.Cog):
+class Music(commands.Cog):
 
     def __init__(self, client):
         self.client = client
@@ -10,4 +10,4 @@ class MusicCommands(commands.Cog):
 
 
 def setup(client):
-    client.add_cog(MusicCommands(client))
+    client.add_cog(Music(client))
