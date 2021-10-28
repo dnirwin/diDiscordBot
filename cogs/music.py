@@ -1,6 +1,5 @@
 import discord
 from discord.ext import commands
-from discord import FFmpegPCMAudio
 import youtube_dl #pip install youtube_dl
 
 
@@ -31,7 +30,7 @@ class Music(commands.Cog):
         vc = ctx.voice_client
 
         with youtube_dl.YoutubeDL(YDL_OPTIONS) as ydl:
-            info = ydl.extract_info(url, download=False)
+            info = ydl.extract_info(url, download=True)
             url2 = info['formats'][0]['url']
             source = await discord.FFmpegOpusAudio.from_probe(url2, **FFMPEG_OPTIONS)
             vc.play(source)
