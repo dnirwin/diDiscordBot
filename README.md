@@ -12,6 +12,7 @@ Python IDE, However, I'm not sure if the above download of discord.py will work 
 
 Going to the Discord Dev Portal (https://discord.com/developers/applications),
 Follow this video for the rest (https://www.youtube.com/watch?v=nW8c7vT6Hl4)
+
 Once you have your bot token, place it in the config.json.sample file and rename it to config.json.
 
 # Credits
