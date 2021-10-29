@@ -7,10 +7,10 @@ Python 3.8 or higher is required.
 
 discord.py is needed, the install instructions can be found here https://github.com/Rapptz/discord.py (Without Full Voice Support)
 
-You can clone the repo and run it in a text editor like Atom https://atom.io/ or possibly a
-Python IDE, However, I'm not sure if the above download of discord.py will work for IDEs.
+You can clone this repo and run it in a text editor like Atom https://atom.io/ or possibly a
+Python IDE, however, I'm not sure if the above download of discord.py will work for IDEs.
 
-Going to the Discord Dev Portal (https://discord.com/developers/applications),
+You'll need a bot token by going to the Discord Dev Portal (https://discord.com/developers/applications),
 Follow this video for the rest (https://www.youtube.com/watch?v=nW8c7vT6Hl4)
 
 Once you have your bot token, place it in the config.json.sample file and rename it to config.json.
