@@ -1,7 +1,25 @@
+import asyncio
 import discord
+import youtube_dl # pip install youtube_dl
 from discord.ext import commands
-import youtube_dl #pip install youtube_dl
 
+ytdl_format_options = {
+    'format': 'bestaudio/best',
+    'outtmpl': '%(extractor)s-%(id)s-%(title)s.%(ext)s',
+    'restrictfilenames': True,
+    'noplaylist': True,
+    'nocheckcertificate': True,
+    'ignoreerrors': False,
+    'logtostderr': False,
+    'quiet': True,
+    'no_warnings': True,
+    'default_search': 'auto',
+    'source_address': '0.0.0.0' # bind to ipv4 since ipv6 addresses cause issues sometimes
+}
+
+ffmpeg_options = {
+    'options': '-vn'
+}
 
 class Music(commands.Cog):
 
@@ -23,16 +41,14 @@ class Music(commands.Cog):
         await ctx.voice_client.disconnect()
 
     @commands.command()
-    async def play(self, ctx, url):
+    async def play(self, ctx, *, url):
         ctx.voice_client.stop()
-        FFMPEG_OPTIONS = {'before_options':'-reconnect 1 -reconnect_streamed 1 -reconnect -reconnect_delay_max 5', 'options': '-vn'}
-        YDL_OPTIONS = {'format': 'bestaudio'}
         vc = ctx.voice_client
 
-        with youtube_dl.YoutubeDL(YDL_OPTIONS) as ydl:
+        with youtube_dl.YoutubeDL(ytdl_format_options) as ydl:
             info = ydl.extract_info(url, download=False)
             url2 = info['formats'][0]['url']
-            source = await discord.FFmpegOpusAudio.from_probe(url2, **FFMPEG_OPTIONS)
+            source = await discord.FFmpegOpusAudio.from_probe(url2, **ffmpeg_options)
             vc.play(source)
 
     @commands.command()
