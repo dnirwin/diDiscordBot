@@ -44,12 +44,12 @@ class YTDLSource(discord.PCMVolumeTransformer):
         filename = data['url'] if stream else ytdl.prepare_filename(data)
         return cls(discord.FFmpegPCMAudio(filename, **ffmpeg_options), data=data)
 
-class Music(commands.Cog):
+class Sounds(commands.Cog):
 
     def __init__(self, client):
         self.client = client
 
-    @commands.command()
+    @commands.command(aliases=['start','connect'])
     async def join(self, ctx):
         if ctx.author.voice is None:
             await ctx.send('You\'re not in a voice channel, I cannot connect.')
@@ -79,7 +79,7 @@ class Music(commands.Cog):
         source = discord.PCMVolumeTransformer(discord.FFmpegPCMAudio(query))
         vc = ctx.voice_client
         vc.play(source)
-        await ctx.send(f'Now playing: {query}')
+        await ctx.send(f'Now playing: {query[:-4]}')
 
     @commands.command()
     async def pause(self, ctx, url):
@@ -91,9 +91,9 @@ class Music(commands.Cog):
         await ctx.voice_client.resume()
         await ctx.send('Music Resumed')
 
-    @commands.command(aliases=['stop', 'disconnect'])
+    @commands.command(aliases=['stop','disconnect'])
     async def leave(self, ctx):
         await ctx.voice_client.disconnect()
 
 def setup(client):
-    client.add_cog(Music(client))
+    client.add_cog(Sounds(client))
