@@ -76,13 +76,13 @@ class Sounds(commands.Cog):
 
     @commands.command(aliases=['sb'])
     async def soundboard(self, ctx, *, query):
-        source = discord.PCMVolumeTransformer(discord.FFmpegPCMAudio(query))
+        source = discord.PCMVolumeTransformer(discord.FFmpegPCMAudio(query)) # This works for the majority of sound files (Most Importantly: WAV, MP3, and MP4)
         vc = ctx.voice_client
         vc.play(source)
         await ctx.send(f'Now playing: {query[:-4]}')
 
     @commands.command()
-    async def pause(self, ctx, url):
+    async def pause(self, ctx, url): # For pause and resume, link or filename is taken as an argument. Will not work if left blank.
         await ctx.voice_client.pause()
         await ctx.send('Music Paused')
 
