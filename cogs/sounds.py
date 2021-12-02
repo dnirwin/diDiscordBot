@@ -82,12 +82,12 @@ class Sounds(commands.Cog):
         await ctx.send(f'Now playing: {query[:-4]}')
 
     @commands.command()
-    async def pause(self, ctx, url): # For pause and resume, link or filename is taken as an argument. Will not work if left blank.
+    async def pause(self, ctx):
         await ctx.voice_client.pause()
         await ctx.send('Music Paused')
 
     @commands.command(aliases=['unpause'])
-    async def resume(self, ctx, url):
+    async def resume(self, ctx):
         await ctx.voice_client.resume()
         await ctx.send('Music Resumed')
 
