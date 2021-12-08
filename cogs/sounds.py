@@ -60,6 +60,10 @@ class Sounds(commands.Cog):
         else:
             await ctx.voice_client.move_to(voice_channel)
 
+    @commands.command(aliases=['stop','disconnect'])
+    async def leave(self, ctx):
+        await ctx.voice_client.disconnect()
+
     @commands.command()
     async def play(self, ctx, *, url):
         ctx.voice_client.stop()
@@ -90,10 +94,6 @@ class Sounds(commands.Cog):
     async def resume(self, ctx):
         await ctx.voice_client.resume()
         await ctx.send('Music Resumed')
-
-    @commands.command(aliases=['stop','disconnect'])
-    async def leave(self, ctx):
-        await ctx.voice_client.disconnect()
 
 def setup(client):
     client.add_cog(Sounds(client))
