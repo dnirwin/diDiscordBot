@@ -5,7 +5,7 @@ as a barebones bot to be changed into the Discord bot of their choosing.
 # How to run this project
 Python 3.8 or higher is required.
 
-discord.py is needed, the install instructions can be found here https://github.com/Rapptz/discord.py (Without Full Voice Support)
+discord.py is needed, the install instructions can be found here https://github.com/Rapptz/discord.py (With Full Voice Support)
 
 You can clone this repo and run it in a text editor like Atom https://atom.io/ or possibly a
 Python IDE, however, I'm not sure if the above download of discord.py will work for IDEs.
