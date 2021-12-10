@@ -1,4 +1,3 @@
-import asyncio # pip install asyncio
 import discord
 import youtube_dl # pip install youtube_dl
 from discord.ext import commands
